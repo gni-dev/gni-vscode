@@ -1,0 +1,62 @@
+{
+    "name": "gni-vscode",
+    "description": "gni debbuger for Go",
+    "displayName": "gni",
+    "version": "0.1.0",
+    "publisher": "gni",
+    "preview": true,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/gni-dev/gni-vscode.git"
+    },
+    "engines": {
+        "vscode": "^1.18.0"
+    },
+    "categories": [
+        "Debuggers"
+    ],
+    "contributes": {
+        "breakpoints": [
+            {
+                "language": "go"
+            }
+        ],
+        "debuggers": [
+            {
+                "type": "gni",
+                "label": "gni debbuger for Go",
+                "program": "~/go/bin/dlv",
+                "configurationAttributes": {
+                    "launch": {
+                        "required": [
+                            "program"
+                        ],
+                        "properties": {
+                            "program": {
+                                "type": "string",
+                                "description": "Path to the program to debug."
+                            },
+                            "args": {
+                                "type": [
+                                    "array",
+                                    "string"
+                                ],
+                                "description": "Program arguments.",
+                                "default": []
+                            }
+                        }
+                    }
+                },
+                "initialConfigurations": [
+                    {
+                        "type": "gni",
+                        "request": "launch",
+                        "name": "Debug",
+                        "program": "${workspaceRoot}/<your program>",
+                        "args": []
+                    }
+                ]
+            }
+        ]
+    }
+}
